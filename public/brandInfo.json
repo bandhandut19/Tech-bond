@@ -1,0 +1,55 @@
+[{
+        "id": 1,
+        "brandName": "Xiaomi",
+        "brandLogo": "https://i.ibb.co/Hxgtcvv/xiaomi-brand.jpg",
+        "brandAd_01": "https://i.ibb.co/KX8wpDb/4-Yra-R9-R6qa4-RCSx-Of44x-U9-H7-EGq-PDjsbc-Pe-YODy-J.png",
+        "brandAd_02": "https://i.ibb.co/R7HD0F1/ld4-IS9bl-Z6-MSBau-Ta5z1coqeo86-XYP60q-Jq-LWI4-Z.png",
+        "brandAd_03": "https://i.ibb.co/nbZycG9/0j2-MBIXr-Wf-Qnz-Hzl-JLlc-A8-RXq-FUe-Rptmv-Y6o-Pf-Ws.png",
+        "brandAd_04": "https://i.ibb.co/N3bsj7x/Vxi-Pw-Lj-Hyy0mk-Y6-Hnj-S6-BS5iypfl-EWF4r-Nt-TBfhf.png"
+    },
+    {
+        "id": 2,
+        "brandName": "HP",
+        "brandLogo": "https://i.ibb.co/9rSqX2b/hp-brand.jpg",
+        "brandAd_01": "",
+        "brandAd_02": "",
+        "brandAd_03": "",
+        "brandAd_04": ""
+    },
+    {
+        "id": 3,
+        "brandName": "OnePlus",
+        "brandLogo": "https://i.ibb.co/WvyRCMN/oneplus-brand.jpg",
+        "brandAd_01": "",
+        "brandAd_02": "",
+        "brandAd_03": "",
+        "brandAd_04": ""
+    },
+    {
+        "id": 4,
+        "brandName": "Anker",
+        "brandLogo": "https://i.ibb.co/9q2KPhw/anker-brand.jpg",
+        "brandAd_01": "",
+        "brandAd_02": "",
+        "brandAd_03": "",
+        "brandAd_04": ""
+    },
+    {
+        "id": 5,
+        "brandName": "Samsung",
+        "brandLogo": "https://i.ibb.co/NYwW61d/samsung-brand.jpg",
+        "brandAd_01": "",
+        "brandAd_02": "",
+        "brandAd_03": "",
+        "brandAd_04": ""
+    },
+    {
+        "id": 6,
+        "brandName": "Baseus",
+        "brandLogo": "https://i.ibb.co/FDmZ6F1/baseus-brand.jpg",
+        "brandAd_01": "",
+        "brandAd_02": "",
+        "brandAd_03": "",
+        "brandAd_04": ""
+    }
+]
