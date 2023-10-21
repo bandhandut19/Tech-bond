@@ -1,15 +1,23 @@
 import PropTypes from 'prop-types';
-import {useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import {Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const SingleBrandProduct = ({ product }) => {
     const { image, brandName, name, type, price, rating } = product
     const navigate = useNavigate()
-
+    const {user} = useContext(AuthContext)
 
 
     const handleDetails = (name)=>{
         console.log(name)
-        navigate(`/${brandName}/${name}`)
+        if(user){
+
+            navigate(`/${brandName}/${name}`)
+        }
+        else{
+            alert("Login First")
+        }
     }
 
 
@@ -28,7 +36,7 @@ const SingleBrandProduct = ({ product }) => {
             <div className='flex gap-10 mb-8 mt-6'>
 
                 <button onClick={()=>{handleDetails(name)}} className='btn bg-amber-500'>Details</button>
-                <button className='btn bg-amber-600'> Update</button>
+                <Link to={`/update/${name}`}><button className='btn bg-amber-600'>Update</button></Link>
             </div>
         </div>
     );

@@ -13,6 +13,10 @@ import AddProducts from './components/AddProducts/AddProducts';
 import MyCart from './components/MyCart/MyCart';
 import SingleBrandProducts from './components/SingleBrandProducts/SingleBrandProducts';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import Login from './components/Login/login';
+import Register from './components/Register/Register';
+import PrivateRouteForAddProduct from './components/PrivateRouteForAddProduct/PrivateRouteForAddProduct';
+import UpdateProducts from './components/UpdateProducts/UpdateProducts';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/addproducts',
-        element: <AddProducts></AddProducts>
+        element: <PrivateRouteForAddProduct><AddProducts></AddProducts></PrivateRouteForAddProduct>
       },
       {
         path:'/mycart',
@@ -38,6 +42,18 @@ const router = createBrowserRouter([
       {
         path:'/:brand/:product',
         element: <ProductDetails></ProductDetails>
+      },
+      {
+        path:'/login',
+        element: <Login></Login>
+      },
+      {
+        path:'/register',
+        element: <Register></Register>
+      },
+      {
+        path:'/update/:name',
+        element: <UpdateProducts></UpdateProducts>
       },
     ]
   },

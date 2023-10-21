@@ -1,6 +1,13 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext, auth } from "../Providers/AuthProvider";
+import { signOut } from "firebase/auth";
 
 const Navbar = () => {
+    const {user}=useContext(AuthContext)
+    const handleLogout=()=>{
+        signOut(auth)
+    }
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -19,12 +26,22 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-10">
                     <li><NavLink to='/'>Home</NavLink></li>
-                    <li><NavLink to='/addproducts'>Add Product</NavLink></li>
+                    {
+                        user ? 
+                        <li><NavLink to='/addproducts'>Add Product</NavLink></li>
+                        :
+                        <li><Link to='/'>Add Product</Link></li> 
+                    }
                     <li><NavLink to='/mycart'>My Cart</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Login</a>
+
+                {
+                    user? <Link to='/' onClick={handleLogout} className="btn">Logout</Link> : <Link to='/login' className="btn">Login</Link>
+                }
+
+                
             </div>
         </div>
     );
