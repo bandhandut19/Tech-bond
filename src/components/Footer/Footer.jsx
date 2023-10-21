@@ -1,10 +1,10 @@
 
 const Footer = () => {
     return (
-        <footer className="footer p-16 bg-amber-500 text-black mt-20 rounded-tl-lg rounded-tr-lg">
+        <footer className="footer p-16 text-center flex items-center justify-around bg-amber-500 text-black mt-20 rounded-tl-lg rounded-tr-lg">
             <aside>
                 
-                <p className="text-xl font-bold">Tech Bond<br />Providing reliable tech since 2022</p>
+                <p className="text-xl font-bold"><span className="text-3xl">Tech Bond</span><br />Providing reliable tech since 2022</p>
             </aside>
             <nav>
                 <header className="footer-title">Social</header>
