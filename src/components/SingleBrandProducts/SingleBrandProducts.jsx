@@ -29,17 +29,44 @@ const SingleBrandProducts = () => {
             })
     }, [])
     const brandProducts = allProducts.filter(prod => prod.brandName.toLowerCase() === name.brand.toLowerCase())
-    const brandSpecificResources = brandResources.filter(prod => prod.brandName.toLowerCase() === name.brand.toLowerCase())
+    const brandSpecificResources = brandResources?.find(prod => prod?.brandName?.toLowerCase() === name?.brand?.toLowerCase())
 
-    const { brandAd_01, brandAd_02, brandAd_03, brandAd_04 } = brandSpecificResources
+    const { brandAd_01, brandAd_02, brandAd_03, brandAd_04 } = brandSpecificResources || {}
     return (
         <div className="text-center mt-10">
-            <h1 className="text-4xl font-bold mb-10">{name.brand}</h1>
+            <h1 className="text-5xl font-bold mb-10">{name.brand}</h1>
 
+            <div className="carousel w-full mb-10">
+                <div id="slide1" className="carousel-item relative w-full">
+                    <img src={brandAd_01} className="w-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide4" className="btn btn-circle bg-amber-600">❮</a>
+                        <a href="#slide2" className="btn btn-circle bg-amber-600">❯</a>
+                    </div>
+                </div>
+                <div id="slide2" className="carousel-item relative w-full">
+                    <img src={brandAd_02} className="w-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide1" className="btn btn-circle bg-amber-600">❮</a>
+                        <a href="#slide3" className="btn btn-circle bg-amber-600">❯</a>
+                    </div>
+                </div>
+                <div id="slide3" className="carousel-item relative w-full">
+                    <img src={brandAd_03} className="w-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide2" className="btn btn-circle bg-amber-600">❮</a>
+                        <a href="#slide4" className="btn btn-circle bg-amber-600">❯</a>
+                    </div>
+                </div>
+                <div id="slide4" className="carousel-item relative w-full">
+                    <img src={brandAd_04} className="w-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide3" className="btn btn-circle bg-amber-600">❮</a>
+                        <a href="#slide1" className="btn btn-circle bg-amber-600">❯</a>
+                    </div>
+                </div>
+            </div>
 
-            {
-                console.log(brandSpecificResources)
-            }
 
 
             {/* slider ends */}
