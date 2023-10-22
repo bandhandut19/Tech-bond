@@ -134,7 +134,7 @@ const Navbar = () => {
                 }
 
 
-                <button onClick={modeHandler} className="px-3 md:py-0.5 md:ml-0 ml-6  rounded font-bold bg-amber-600">Dark Mode</button>
+                <button onClick={modeHandler} className="px-3 md:py-0.5 md:ml-0 ml-6  rounded font-bold bg-amber-600">{darkMode == "light"?"Dark Mode" :"Light Mode"}</button>
 
 
             </div>
