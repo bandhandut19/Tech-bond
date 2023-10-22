@@ -21,7 +21,7 @@ const AvailableBrands = () => {
 
     return (
         <div className="mb-10 text-center">
-            <h1 className="text-3xl font-bold">Choose Your Aquainted Brand</h1>
+            <h1 className="text-4xl font-bold bg-amber-500 rounded p-4 text-black">Choose Your Aquainted Brand</h1>
             <div className="grid md:grid-cols-3 grid-cols-2 gap-4 mt-8">
 
                 {

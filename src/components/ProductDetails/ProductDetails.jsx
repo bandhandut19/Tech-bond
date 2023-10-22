@@ -97,8 +97,8 @@ const ProductDetails = () => {
                 </div>
             </div>
 
-            <Link><button onClick={handleAddToCart} className="btn w-full mt-6 bg-amber-600">Add to Cart</button></Link>
-            <button onClick={handleGoBack} className="btn w-full mt-6 bg-amber-600">Go Back to {product?.brandName} all products</button>
+            <Link><button onClick={handleAddToCart} className="btn w-full mt-6 bg-amber-600 text-black hover:text-amber-600">Add to Cart</button></Link>
+            <button onClick={handleGoBack} className="btn w-full mt-6 bg-amber-600 text-black hover:text-amber-600">Go Back to {product?.brandName} all products</button>
         </div>
     );
 };

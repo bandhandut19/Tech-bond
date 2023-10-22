@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext, auth } from "../Providers/AuthProvider";
 import { signOut } from "firebase/auth";
@@ -7,11 +7,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import logo from '../../assets/images/logo.jpg'
 const Navbar = () => {
     const { authInfo } = useContext(AuthContext)
-    const { user} = authInfo
+    const { user } = authInfo
     const handleLogout = () => {
         signOut(auth)
     }
-    
+
+    const [userInfo, setUserInfo] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/userinfo')
+            .then(res => res.json())
+            .then(data => setUserInfo(data))
+    }, [])
+
+
+    const currentUserInfo = user ? userInfo?.find(item => user?.email.toLowerCase() === item.email.toLowerCase()) : null;
     const handleAddProduct = () => {
 
         if (!user) {
@@ -28,8 +37,33 @@ const Navbar = () => {
         }
     }
 
+
+    const [darkMode,setDarkMode]=useState("light")
+
+    const modeHandler = () => {
+        const html = document.documentElement;
+    
+        if (darkMode === "light") {
+            html.setAttribute("data-theme", "dark")
+            setDarkMode("dark");
+            localStorage.setItem("mode",'dark')
+        } else {
+            html.setAttribute("data-theme", "light")
+            setDarkMode("light");
+            localStorage.setItem("mode",'light')
+        }
+    };
+
+    useEffect(()=>{
+        const presentMode = localStorage.getItem("mode") || "light"
+        setDarkMode(presentMode)
+        const html = document.documentElement
+        html.setAttribute("data-theme",presentMode)
+    },[])
+    
+
     return (
-        <div className="navbar bg-base-100">
+        <div className={`navbar ${darkMode == "dark"? "text-white":"text-black"}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,22 +72,22 @@ const Navbar = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li><NavLink to='/'>Home</NavLink></li>
                         {
-                        user ?
-                            <li><NavLink to='/addproducts'>Add Product</NavLink></li>
-                            :
-                            <li><button onClick={handleAddProduct}>Add Product</button></li>
-                    }
-                    {
-                        user ?
-                            <li><NavLink to='/mycart'>My Cart</NavLink></li>
-                            :
-                            <li><button onClick={handleAddProduct}>My Cart</button></li>
-                    }
+                            user ?
+                                <li><NavLink to='/addproducts'>Add Product</NavLink></li>
+                                :
+                                <li><button onClick={handleAddProduct}>Add Product</button></li>
+                        }
+                        {
+                            user ?
+                                <li><NavLink to='/mycart'>My Cart</NavLink></li>
+                                :
+                                <li><button onClick={handleAddProduct}>My Cart</button></li>
+                        }
                     </ul>
                 </div>
                 <div className="flex text-center items-center justify-center">
-                    <img className="w-[5rem]" src={logo} alt="" />
-                <Link to='/' className="normal-case md:text-4xl text-xl font-extrabold text-amber-600">Tech Bond</Link>
+                    <img className="md:w-[5rem] w-[3rem] md:mr-2" src={logo} alt="" />
+                    <Link to='/' className="normal-case md:text-4xl text-lg font-extrabold text-amber-600">TechBond</Link>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -74,21 +108,27 @@ const Navbar = () => {
 
                 </ul>
             </div>
-            <div className="navbar-end flex md:flex-row flex-col-reverse">
+            <div className="navbar-end flex md:flex-row flex-col gap-1 text-center items-center justify-center">
 
-                <div>
-                    {
-                        user ? <h1 className="mr-2 mt-2 md:mt-0 bg-amber-500 px-2 rounded-lg">{user.email}</h1>: ''
-                    }
-                </div>
-                <div>
+                <div className="md:mr-2 mr-0 flex md:flex-row flex-col md:mt-0 mt-2 text-center items-center justify-center">
+                    {user ? <>
+                    <div className="flex items-center justify-center gap-2">
 
+                        <img className="md:w-[3rem] w-[2rem]" src={currentUserInfo?.photo} alt="" />
+                        <h1 className="bg-amber-500 px-2 rounded ">{currentUserInfo?.name}</h1>
+                    </div>
+                    </>
+
+                        : ''}
                 </div>
 
                 {
-                    user ? <Link to='/' onClick={handleLogout} className="btn">Logout</Link> : <Link to='/login' className="btn">Login</Link>
+                    user ? <Link to='/' onClick={handleLogout} className="px-3 md:py-0.5 md:ml-0 ml-6 rounded font-bold bg-amber-600">Logout</Link> : <Link to='/login' className="btn">Login</Link>
                 }
+                
 
+                <button onClick={modeHandler} className="px-3 md:py-0.5 md:ml-0 ml-6  rounded font-bold bg-amber-600">Dark Mode</button>
+                
 
             </div>
         </div>

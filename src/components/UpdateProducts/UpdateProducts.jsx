@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const UpdateProducts = () => {
     const product = useParams()
@@ -46,7 +47,14 @@ const UpdateProducts = () => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    alert("successfull")
+                    toast("Product Updated Successfully", {
+                        position: "top-center",
+                        autoClose: 1000, // Close after 1 second
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                    })
                 }
             })
     }

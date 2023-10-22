@@ -1,4 +1,4 @@
-
+import { toast } from 'react-toastify';
 const AddProducts = () => {
     const handleAddProduct =(e)=>{
         e.preventDefault()
@@ -26,7 +26,14 @@ const AddProducts = () => {
         .then(res=> res.json())
         .then(data => {
             if(data){
-                alert("successfull")
+                toast("Product Added Successfully", {
+                    position: "top-center",
+                    autoClose: 1000, // Close after 1 second
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                })
                 form.reset()
 
             }
@@ -43,25 +50,25 @@ const AddProducts = () => {
                             <label className="label">
                                 <span className="label-text">Product Image</span>
                             </label>
-                            <input type="text" placeholder="Product image URL" name="ProductImageUrl" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product image URL" name="ProductImageUrl" className="input input-bordered w-full max-w-xs" required />
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Product Name</span>
                             </label>
-                            <input type="text" placeholder="Product name" name="ProductName" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product name" name="ProductName" className="input input-bordered w-full max-w-xs" required />
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Brand Name</span>
                             </label>
-                            <input type="text" placeholder="Brand Name" name="BrandName" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Brand Name" name="BrandName" className="input input-bordered w-full max-w-xs"required />
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Type</span>
                             </label>
-                            <input type="text" placeholder="Product type" name="ProductType" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product type" name="ProductType" className="input input-bordered w-full max-w-xs" required />
                         </div>
 
                     </div>
@@ -71,25 +78,25 @@ const AddProducts = () => {
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input type="text" placeholder="Product price" name="ProductPrice" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product price" name="ProductPrice" className="input input-bordered w-full max-w-xs" required />
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Description</span>
                             </label>
-                            <input type="text" placeholder="Product's description" name="ProductDescription" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product's description" name="ProductDescription" className="input input-bordered w-full max-w-xs"  required/>
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input type="text" placeholder="Product rating out of 10" name="ProductRating" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product rating out of 10" name="ProductRating" className="input input-bordered w-full max-w-xs" required />
                         </div>
                     </div>
 
                 </div>
                 <div className="flex items-center justify-center mt-10 mb-10">
-                    <input className="btn w-4/5 bg-amber-500" type="submit" value="Add Product" />
+                    <input className="btn w-4/5 bg-amber-500 text-black hover:text-amber-600" type="submit" value="Add Product" />
 
                 </div>
             </form>

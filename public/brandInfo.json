@@ -11,10 +11,10 @@
         "id": 2,
         "brandName": "HP",
         "brandLogo": "https://i.ibb.co/9rSqX2b/hp-brand.jpg",
-        "brandAd_01": "",
-        "brandAd_02": "",
-        "brandAd_03": "",
-        "brandAd_04": ""
+        "brandAd_01": "https://i.ibb.co/Swj6tT9/hp-new-banner-500.jpg",
+        "brandAd_02": "https://i.ibb.co/vBk0XkC/HP-A3-Banner.jpg",
+        "brandAd_03": "https://i.ibb.co/KF0q7yD/f362da6d985d6bc0dcf77ad55217a812-w3000-h600-CR0-0-3000-600-SX1280.jpg",
+        "brandAd_04": "https://i.ibb.co/vv35x58/Screenshot-174.png"
     },
     {
         "id": 3,
@@ -29,27 +29,27 @@
         "id": 4,
         "brandName": "Anker",
         "brandLogo": "https://i.ibb.co/9q2KPhw/anker-brand.jpg",
-        "brandAd_01": "",
-        "brandAd_02": "",
-        "brandAd_03": "",
-        "brandAd_04": ""
+        "brandAd_01": "https://i.ibb.co/DzVcqCc/285848265-5090991701018613-6538050375475933736-n.jpg",
+        "brandAd_02": "https://i.ibb.co/vvXx0dR/anker-banner.jpg",
+        "brandAd_03": "https://i.ibb.co/NpbQ2rJ/Screenshot-175.png",
+        "brandAd_04": "https://i.ibb.co/bFxH7Wm/6baffa112329ca65a65064f21848b36b801d8a2d.jpg"
     },
     {
         "id": 5,
         "brandName": "Samsung",
         "brandLogo": "https://i.ibb.co/NYwW61d/samsung-brand.jpg",
-        "brandAd_01": "",
-        "brandAd_02": "",
-        "brandAd_03": "",
-        "brandAd_04": ""
+        "brandAd_01": "https://i.ibb.co/W3mFy1V/banner-1.jpg",
+        "brandAd_02": "https://i.ibb.co/jRLJPnV/Samsung-Watch6-Preorder-Promo-Slot-Desktop-944x360.jpg",
+        "brandAd_03": "https://i.ibb.co/X71DjYz/samsung-galaxy-watch-active-to-t.jpg",
+        "brandAd_04": "https://i.ibb.co/m4rdwfy/e-SIS-banners-desktop.png"
     },
     {
         "id": 6,
         "brandName": "Baseus",
         "brandLogo": "https://i.ibb.co/FDmZ6F1/baseus-brand.jpg",
-        "brandAd_01": "",
-        "brandAd_02": "",
-        "brandAd_03": "",
-        "brandAd_04": ""
+        "brandAd_01": "https://i.ibb.co/K6b43Vt/image-2023-10-22-165550736.png",
+        "brandAd_02": "https://i.ibb.co/RQ0z6SS/Screenshot-2023-08-31-at-16-05-31-8-30-1630-2023-NEW-PRODUCT-LAUNCH-pdf.png",
+        "brandAd_03": "https://i.ibb.co/82wZgXs/csm-Screenshot-2023-08-31-at-16-04-15-8-30-1630-2023-NEW-PRODUCT-LAUNCH-pdf-e1a78a84c6.png",
+        "brandAd_04": "https://i.ibb.co/D44w7fy/baseus-blade-2-960x420.png"
     }
 ]

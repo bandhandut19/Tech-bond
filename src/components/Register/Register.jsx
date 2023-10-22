@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { getAuth } from "firebase/auth";
@@ -8,9 +8,11 @@ import { toast } from 'react-toastify';
 export const auth = getAuth(app)
 
 
+
+
 const Register = () => {
     const { authInfo } = useContext(AuthContext)
-    const { createUser ,credentials} = authInfo
+    const { createUser } = authInfo
     const navigate = useNavigate()
     const [error, setError] = useState(null)
     const handleRegister = async (e) => {
@@ -34,22 +36,32 @@ const Register = () => {
             form.password.value = ''
         } else {
             // Password meets the criteria
-            
+
             const userInfo = { name, email, inputPassword, photo };
 
 
+           
 
-            credentials(userInfo)
+
+            fetch('http://localhost:5000/userinfo', {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userInfo)
+            })
+                .then(res => res.json())
+                .then(data => console.log(data))
 
 
 
 
             if (email && inputPassword) {
-                
+
                 try {
                     const result = await createUser(email, inputPassword);
                     console.log(result);
-                    toast("Registration Successful", {
+                    toast("Registration Successful ! You are logged in", {
                         position: "top-center",
                         autoClose: 1000, // Close after 1 second
                         hideProgressBar: false,
@@ -58,7 +70,7 @@ const Register = () => {
                         draggable: true,
                     });
                     form.reset();
-                    navigate('/login');
+                    navigate('/');
                 } catch (error) {
                     setError(error.message);
                     console.log(error);
@@ -70,8 +82,10 @@ const Register = () => {
     };
 
 
+
+
     return (
-        <div className="hero min-h-screen bg-amber-400 rounded-lg mt-16">
+        <div className="hero min-h-screen bg-amber-400 rounded-lg mt-16 text-black">
             <div className="hero-content flex-col">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Register now!</h1>
@@ -81,13 +95,13 @@ const Register = () => {
                     <form className="card-body" onSubmit={handleRegister}>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text text-black">Name</span>
                             </label>
                             <input type="text" placeholder="Enter your name" name="name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span className="label-text text-black">Email</span>
                             </label>
                             <input type="email" placeholder="Enter your email" name="email" className="input input-bordered" required />
                         </div>
@@ -99,18 +113,21 @@ const Register = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span className="label-text text-white ">Password</span>
                             </label>
                             <input type="password" placeholder="Enter your password" name="password" className="input input-bordered" required />
                             <label className="label mt-4">
-                                <Link to='/login' className="label-text-alt ">Already have an account ? <span className="link  text-amber-600  bg-slate-300 p-1 px-4 rounded-lg"> LOGIN NOW </span> </Link>
+                                <Link to='/login' className="label-text-alt text-black ">Already have an account ? <span className="link  text-amber-600  bg-slate-300 p-1 px-4 rounded-lg"> LOGIN NOW </span> </Link>
                             </label>
                             {
                                 error ? <p className="text-red-800">{error}</p> : ""
                             }
                         </div>
                         <div className="form-control mt-6">
-                            <input className="btn bg-amber-500" type="submit" value="Register" />
+                            <input className="btn text-black bg-amber-500" type="submit" value="Register" />
+
+                            {/* future feature button to clear register-info state */}
+                            <button className="btn bg-amber-500 hidden">Erase Register DB </button>
                         </div>
                     </form>
                 </div>

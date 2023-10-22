@@ -9,8 +9,7 @@ export const AuthContext = createContext(null)
 
 const AuthProvider = ({children}) => {
 
-
-    
+  
    const [user,setUser] = useState(null)
     const [loading,setLoading] =useState(true)
    
@@ -34,16 +33,13 @@ const AuthProvider = ({children}) => {
         } 
     },[])
 
-    const [cred,setCred] = useState([])
+  
 
-    const credentials = (credentials)=>{
-        setCred(credentials)
-    }
+
+
+   
+
     
-
-
-
-
 
 
 
@@ -56,7 +52,7 @@ const AuthProvider = ({children}) => {
         loading
     }
     return (
-        <AuthContext.Provider value={{authInfo,cred,credentials}}>
+        <AuthContext.Provider value={{authInfo}}>
             {children}
         </AuthContext.Provider>
     );

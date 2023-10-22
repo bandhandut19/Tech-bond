@@ -1,5 +1,8 @@
+
 import AvailableBrands from "../AvailableBrands/AvailableBrands";
 import Banner from "../Banner/Banner";
+import Deals from "../Deals/Deals";
+import Services from "../Services/Services";
 
 
 const Home = () => {
@@ -8,6 +11,8 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <AvailableBrands></AvailableBrands>
+            <Services></Services>
+            <Deals></Deals>
        
            
             

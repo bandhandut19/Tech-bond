@@ -65,9 +65,9 @@ const SingleBrandProduct = ({ product }) => {
             </div>
             <div className='flex gap-10 mb-8 mt-6'>
 
-                <button onClick={()=>{handleDetails(name)}} className='btn bg-amber-500'>Details</button>
+                <button onClick={()=>{handleDetails(name)}} className='btn bg-amber-500 text-black hover:text-amber-600'>Details</button>
                 {
-                    user? <Link to={`/update/${name}`}><button onClick={handleUpdate} className='btn bg-amber-600'>Update</button></Link> : <Link to={`#`}><button onClick={handleUpdate} className='btn bg-amber-600'>Update</button></Link>
+                    user? <Link to={`/update/${name}`}><button onClick={handleUpdate} className='btn bg-amber-600 text-black hover:text-amber-600'>Update</button></Link> : <Link to={`#`}><button onClick={handleUpdate} className='btn bg-amber-600'>Update</button></Link>
                 }
                 
             </div>
