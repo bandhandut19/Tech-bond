@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const [userInfo, setUserInfo] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/userinfo')
+        fetch('https://tech-bond-server.vercel.app/userinfo')
             .then(res => res.json())
             .then(data => setUserInfo(data))
     }, [])

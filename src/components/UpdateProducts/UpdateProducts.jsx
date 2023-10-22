@@ -9,7 +9,7 @@ const UpdateProducts = () => {
     const [products,setProducts]=useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/allproducts')
+        fetch('https://tech-bond-server.vercel.app/allproducts')
         .then(res => res.json())
         .then(data => setProducts(data))
     },[])
@@ -35,7 +35,7 @@ const UpdateProducts = () => {
 
 
 
-        fetch(`http://localhost:5000/allproducts/${_id}`, {
+        fetch(`tech-bond-server-lxy8836ao-bandhandut19.vercel.app/${_id}`, {
             method: 'PUT',
             headers:
             {

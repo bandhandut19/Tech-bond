@@ -43,7 +43,7 @@ const Register = () => {
            
 
 
-            fetch('http://localhost:5000/userinfo', {
+            fetch('https://tech-bond-server.vercel.app/userinfo', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

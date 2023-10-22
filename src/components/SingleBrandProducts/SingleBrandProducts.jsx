@@ -7,13 +7,14 @@ const SingleBrandProducts = () => {
     const name = useParams()
     const [allProducts, setAllProducts] = useState([])
     const [brandResources, setBrandResources] = useState([])
-
+    const [loader,setLoader] = useState(true)
     useEffect(() => {
-        fetch('http://localhost:5000/allproducts')
+        fetch('https://tech-bond-server.vercel.app/allproducts')
             .then(res => res.json())
             .then(data => {
                 if (data) {
                     setAllProducts(data)
+                    setLoader(false)
                 }
             })
 
@@ -40,8 +41,10 @@ const SingleBrandProducts = () => {
         {
              brandProducts?.length===0 ? 
              <div className="text-center">
+               {
 
-                <h1 className="text-5xl text-amber-600 font-bold mt-32">Products Will Be Available Soon</h1>
+                 loader?<span className="loading loading-bars loading-lg bg-amber-600"></span> : <h1 className="text-5xl text-amber-600 font-bold mt-32">Products Will Be Available Soon</h1>
+               }
              </div>
              
              

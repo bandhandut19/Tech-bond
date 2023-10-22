@@ -8,7 +8,7 @@ const MyCartProduct = ({singleCartItem}) => {
     
     const handleRemoveCart = (_id)=>{
         console.log(_id)
-        fetch(`http://localhost:5000/usercart/${_id}`,{
+        fetch(`https://tech-bond-server.vercel.app/usercart/${_id}`,{
             method: "DELETE"
         })
         .then(res=> res.json())

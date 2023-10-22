@@ -9,7 +9,7 @@ const ProductDetails = () => {
     const {user} = authInfo
 
     useEffect(() => {
-        fetch('http://localhost:5000/allproducts')
+        fetch('https://tech-bond-server.vercel.app/allproducts')
             .then(res => res.json())
             .then(data => {
                 if (data) {
@@ -47,7 +47,7 @@ const ProductDetails = () => {
 
             
             
-            fetch('http://localhost:5000/usercart',{
+            fetch('https://tech-bond-server.vercel.app/usercart',{
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
@@ -97,7 +97,7 @@ const ProductDetails = () => {
                 </div>
             </div>
 
-            <Link><button onClick={handleAddToCart} className="btn w-full mt-6 bg-amber-600 text-black hover:text-amber-600">Add to Cart</button></Link>
+            <Link><button onClick={handleAddToCart} className="btn w-full mt-6 bg-amber-600 text-black md:hover:text-black hover:text-black">Add to Cart</button></Link>
             <button onClick={handleGoBack} className="btn w-full mt-6 bg-amber-600 text-black hover:text-amber-600">Go Back to {product?.brandName} all products</button>
         </div>
     );

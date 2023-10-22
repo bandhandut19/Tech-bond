@@ -14,7 +14,7 @@ const AddProducts = () => {
         const addProductInfo = {image,name,brandName,type,price,description,rating}
         console.log(addProductInfo)
 
-        fetch('http://localhost:5000/allproducts',{
+        fetch('https://tech-bond-server.vercel.app/allproducts',{
             method: 'POST',
             headers:
                 {
