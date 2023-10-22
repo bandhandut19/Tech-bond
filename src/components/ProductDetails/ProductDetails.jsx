@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import { AuthContext } from "../Providers/AuthProvider";
+import { toast } from 'react-toastify';
 const ProductDetails = () => {
     const productDetails = useParams()
     const [allProducts, setAllProducts] = useState([])
+    const {user} = useContext(AuthContext)
 
     useEffect(() => {
         fetch('http://localhost:5000/allproducts')
@@ -22,6 +24,54 @@ const ProductDetails = () => {
     const handleGoBack=()=>{
         navigate(-1)
     }
+
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+    const [userCart,setUserCart] = useState({})
+
+    useEffect(()=>{
+        if(product){
+
+            const curentUserCart = {
+                productinfo: product,
+                userEmail: user?.email
+            }
+            setUserCart(curentUserCart)
+        }
+    },[product,user])
+    const handleAddToCart = ()=>{
+        const userEmail = user.email
+        const isValid = emailRegex.test(userEmail)
+        if(isValid){
+
+            
+            
+            fetch('http://localhost:5000/usercart',{
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userCart)
+            })
+            .then(res => res.json())
+            .then(data => 
+              {  if(data.insertedId){
+                toast("Added to your cart", {
+                    position: "top-center",
+                    autoClose: 1000, // Close after 1 seconds
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                  });
+
+            }})
+        }
+        else{
+            console.log("Not a valid email")
+        }
+    }
+
 
     return (
         <div>
@@ -46,7 +96,7 @@ const ProductDetails = () => {
                 </div>
             </div>
 
-            <Link><button className="btn w-full mt-6 bg-amber-600">Add to Cart</button></Link>
+            <Link><button onClick={handleAddToCart} className="btn w-full mt-6 bg-amber-600">Add to Cart</button></Link>
             <button onClick={handleGoBack} className="btn w-full mt-6 bg-amber-600">Go Back to {product?.brandName} all products</button>
         </div>
     );

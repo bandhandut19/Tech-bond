@@ -3,38 +3,61 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { getAuth } from "firebase/auth";
 import app from '../../../firebase.config';
-
+import { toast } from 'react-toastify';
 
 export const auth = getAuth(app)
 
 
 const Register = () => {
-    const { createUser, user} = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
     const navigate = useNavigate()
-
     const [error, setError] = useState(null)
-
     const handleRegister = async (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
-        const password = form.password.value;
+        const inputPassword = form.password.value;
         const photo = form.profilePhoto.value;
+        const capitalRegex = /[A-Z]/;
+        const specialRegex = /[!@#$%^&*]/;
 
-        const userInfo = { name, email, password, photo }
-
-        if (email && password) {
-            try {
-                const result = await createUser(email, password);
-                console.log('Registration successful:', result.user);
-                user(userInfo)
-                form.reset();
-                navigate('/login')
-            } catch (error) {
-                setError(error.message)
+        if (inputPassword.length < 6) {
+            setError("Password should be greater or equal to 6 characters.");
+            form.password.value = ''
+        } else if (!capitalRegex.test(inputPassword)) {
+            setError("Password should contain at least 1 uppercase letter.");
+            form.password.value = ''
+        } else if (!specialRegex.test(inputPassword)) {
+            setError("Password should contain at least one special character.");
+            form.password.value = ''
+        } else {
+            // Password meets the criteria
+            
+            const userInfo = { name, email, inputPassword, photo };
+            if (email && inputPassword) {
+                
+                try {
+                    const result = await createUser(email, inputPassword);
+                    console.log(result);
+                    toast("Registration Successful", {
+                        position: "top-center",
+                        autoClose: 1000, // Close after 1 second
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                    });
+                    form.reset();
+                    navigate('/login');
+                } catch (error) {
+                    setError(error.message);
+                    console.log(error);
+                }
             }
         }
+
+
     };
 
 

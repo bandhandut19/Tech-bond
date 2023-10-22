@@ -18,6 +18,7 @@ import Register from './components/Register/Register';
 import PrivateRouteForAddProduct from './components/PrivateRouteForAddProduct/PrivateRouteForAddProduct';
 import UpdateProducts from './components/UpdateProducts/UpdateProducts';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/update/:name',
-        element: <UpdateProducts></UpdateProducts>
+        element: <PrivateRouteForAddProduct><UpdateProducts></UpdateProducts></PrivateRouteForAddProduct>
       },
     ]
   },
@@ -63,7 +64,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
      <RouterProvider router={router} />
-
+    
     </AuthProvider>
   </React.StrictMode>,
 )

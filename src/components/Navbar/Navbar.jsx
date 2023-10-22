@@ -1,13 +1,34 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext, auth } from "../Providers/AuthProvider";
 import { signOut } from "firebase/auth";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import logo from '../../assets/images/logo.jpg'
 const Navbar = () => {
-    const {user}=useContext(AuthContext)
-    const handleLogout=()=>{
+    const { user,userInfo} = useContext(AuthContext)
+    console.log(user)
+    const handleLogout = () => {
         signOut(auth)
     }
+    
+    console.log(userInfo)
+    const handleAddProduct = () => {
+
+        if (!user) {
+
+
+            toast("Login / Register To View", {
+                position: "top-center",
+                autoClose: 1000, // Close after 1 seconds
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+            });
+        }
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -17,31 +38,59 @@ const Navbar = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li><NavLink to='/'>Home</NavLink></li>
-                        <li><NavLink to='/addproducts'>Add Products</NavLink></li>
-                        <li><NavLink to='/mycart'>My Cart</NavLink></li>
+                        {
+                        user ?
+                            <li><NavLink to='/addproducts'>Add Product</NavLink></li>
+                            :
+                            <li><button onClick={handleAddProduct}>Add Product</button></li>
+                    }
+                    {
+                        user ?
+                            <li><NavLink to='/mycart'>My Cart</NavLink></li>
+                            :
+                            <li><button onClick={handleAddProduct}>My Cart</button></li>
+                    }
                     </ul>
                 </div>
+                <div className="flex text-center items-center justify-center">
+                    <img className="w-[5rem]" src={logo} alt="" />
                 <Link to='/' className="normal-case md:text-4xl text-xl font-extrabold text-amber-600">Tech Bond</Link>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-10">
                     <li><NavLink to='/'>Home</NavLink></li>
                     {
-                        user ? 
-                        <li><NavLink to='/addproducts'>Add Product</NavLink></li>
-                        :
-                        <li><Link to='/'>Add Product</Link></li> 
+                        user ?
+                            <li><NavLink to='/addproducts'>Add Product</NavLink></li>
+                            :
+                            <li><button onClick={handleAddProduct}>Add Product</button></li>
                     }
-                    <li><NavLink to='/mycart'>My Cart</NavLink></li>
+                    {
+                        user ?
+                            <li><NavLink to='/mycart'>My Cart</NavLink></li>
+                            :
+                            <li><button onClick={handleAddProduct}>My Cart</button></li>
+                    }
+
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end flex md:flex-row flex-col-reverse">
+
+                <div>
+                    {
+                        user ? <h1 className="mr-2 mt-2 md:mt-0 bg-amber-500 px-2 rounded-lg">{user.email}</h1>: ''
+                    }
+                </div>
+                <div>
+
+                </div>
 
                 {
-                    user? <Link to='/' onClick={handleLogout} className="btn">Logout</Link> : <Link to='/login' className="btn">Login</Link>
+                    user ? <Link to='/' onClick={handleLogout} className="btn">Logout</Link> : <Link to='/login' className="btn">Login</Link>
                 }
 
-                
+
             </div>
         </div>
     );

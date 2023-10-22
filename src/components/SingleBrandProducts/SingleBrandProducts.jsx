@@ -35,7 +35,22 @@ const SingleBrandProducts = () => {
     return (
         <div className="text-center mt-10">
             <h1 className="text-5xl font-bold mb-10">{name.brand}</h1>
+            
+            
+        {
+             brandProducts.length===0 ? 
+             <div className="text-center">
 
+                <h1 className="text-5xl text-amber-600 font-bold mt-32">Products Will Be Available Soon</h1>
+             </div>
+             
+             
+             :
+             
+             <>
+             
+        
+               
             <div className="carousel w-full mb-10">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src={brandAd_01} className="w-full" />
@@ -70,13 +85,17 @@ const SingleBrandProducts = () => {
 
 
             {/* slider ends */}
-
+            
+                
+                 
             <div className="grid md:grid-cols-2 grid-cols-1 gap-5 items-center justify-center">
 
                 {
                     brandProducts.map(product => <SingleBrandProduct key={product._id} product={product}></SingleBrandProduct>)
                 }
             </div>
+            </>
+}
         </div>
     );
 };

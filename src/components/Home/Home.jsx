@@ -8,9 +8,9 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <AvailableBrands></AvailableBrands>
-            <h1>This is home</h1> 
+       
            
-
+            
         </div>
     );
 };

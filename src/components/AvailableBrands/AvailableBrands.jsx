@@ -14,8 +14,8 @@ const AvailableBrands = () => {
     }, [])
 
     const handleBrandClick = (name) => {
-        const clickedBrand = name.toLowerCase()
-        console.log(clickedBrand)
+        // const clickedBrand = name.toLowerCase()
+        // console.log(clickedBrand)
         navigate(`/${name}`)
     }
 

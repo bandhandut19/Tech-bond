@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const UpdateProducts = () => {
     const product = useParams()
+
+
+    const [products,setProducts]=useState([])
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/allproducts')
+        .then(res => res.json())
+        .then(data => setProducts(data))
+    },[])
+    const productInfo = products.find(prod => prod.name.toLowerCase() === product.name.toLowerCase())
 
     const handleUpdateProduct = (e) => {
         e.preventDefault()
@@ -15,10 +26,16 @@ const UpdateProducts = () => {
         const rating = form.ProductRating.value
 
         const addProductInfo = { image, name, brandName, type, price, description, rating }
-        console.log(addProductInfo)
 
-        fetch('http://localhost:5000/allproducts', {
-            method: 'POST',
+
+        const {_id} = productInfo
+
+        
+
+
+
+        fetch(`http://localhost:5000/allproducts/${_id}`, {
+            method: 'PUT',
             headers:
             {
                 'content-type': 'application/json'
@@ -30,13 +47,16 @@ const UpdateProducts = () => {
             .then(data => {
                 if (data) {
                     alert("successfull")
-                    form.reset()
-
                 }
             })
     }
     return (
         <div className="mt-20 w-11/12 mx-auto border-2 border-amber-500 rounded-lg shadow-2xl">
+            <div className="flex flex-col text-center items-center justify-center">
+                <h1 className="text-2xl font-bold mt-5">UPDATE</h1>
+                <h1 className="text-2xl font-bold mt-5">{productInfo?.name}</h1>
+            </div>
+
             <form onSubmit={handleUpdateProduct}>
                 <div className="ml-16 grid md:grid-cols-2 grid-cols-1 md:gap-8 p-4" >
 
@@ -46,25 +66,25 @@ const UpdateProducts = () => {
                             <label className="label">
                                 <span className="label-text">Product Image</span>
                             </label>
-                            <input type="text" placeholder="Product image URL" name="ProductImageUrl" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product image URL" name="ProductImageUrl" defaultValue={productInfo?.image} className="input input-bordered w-full max-w-xs" />
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Product Name</span>
                             </label>
-                            <input type="text" placeholder="Product name" name="ProductName" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product name" name="ProductName" defaultValue={productInfo?.name} className="input input-bordered w-full max-w-xs" />
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Brand Name</span>
                             </label>
-                            <input type="text" placeholder="Brand Name" name="BrandName" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Brand Name" name="BrandName" defaultValue={productInfo?.brandName} className="input input-bordered w-full max-w-xs" />
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Type</span>
                             </label>
-                            <input type="text" placeholder="Product type" name="ProductType" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product type" name="ProductType" defaultValue={productInfo?.type} className="input input-bordered w-full max-w-xs" />
                         </div>
 
                     </div>
@@ -74,19 +94,19 @@ const UpdateProducts = () => {
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input type="text" placeholder="Product price" name="ProductPrice" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product price" name="ProductPrice" defaultValue={productInfo?.price} className="input input-bordered w-full max-w-xs" />
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Description</span>
                             </label>
-                            <input type="text" placeholder="Product's description" name="ProductDescription" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product's description" name="ProductDescription" defaultValue={productInfo?.description} className="input input-bordered w-full max-w-xs" />
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input type="text" placeholder="Product rating out of 10" name="ProductRating" className="input input-bordered w-full max-w-xs" />
+                            <input type="text" placeholder="Product rating out of 10" name="ProductRating" defaultValue={productInfo?.rating} className="input input-bordered w-full max-w-xs" />
                         </div>
                     </div>
 
