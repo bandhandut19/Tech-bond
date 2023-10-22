@@ -1,4 +1,4 @@
-import { useContext, useState} from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { getAuth } from "firebase/auth";
@@ -12,7 +12,7 @@ export const auth = getAuth(app)
 
 
 const Register = () => {
-    
+
 
     const { authInfo } = useContext(AuthContext)
     const { createUser } = authInfo
@@ -43,7 +43,7 @@ const Register = () => {
             const userInfo = { name, email, inputPassword, photo };
 
 
-           
+
 
 
             fetch('https://tech-bond-server.vercel.app/userinfo', {
@@ -76,7 +76,18 @@ const Register = () => {
                     navigate('/');
                 } catch (error) {
                     setError(error.message);
-                    console.log(error);
+                    // console.log(error.code);
+
+                    // switch (error.code) {
+                    //     case "auth/user-not-found":
+                    //         setError("Email Doesn't Match")
+                    //         break;
+                    //     case "auth/wrong-password":
+                    //         setError("Password Doesn't Match")
+                    //         break
+                    //     default:
+                    //         setError(error.message)
+                    // }
                 }
             }
         }

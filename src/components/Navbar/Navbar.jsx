@@ -92,7 +92,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-10">
-                    <li><NavLink to='/'>Home</NavLink></li>
+                    <li className="ml-10"><NavLink to='/'>Home</NavLink></li>
                     {
                         user ?
                             <li><NavLink to='/addproducts'>Add Product</NavLink></li>
@@ -110,12 +110,17 @@ const Navbar = () => {
             </div>
             <div className="navbar-end flex md:flex-row flex-col gap-1 text-center items-center justify-center">
 
-                <div className="md:mr-2 mr-0 flex md:flex-row flex-col md:mt-0 mt-2 text-center items-center justify-center">
+                <div className="md:mr-2 mr-0 flex md:flex-row flex-col md:mt-0 ml-5 md:ml-0 text-center items-center justify-center">
                     {user ? <>
-                        <div className="flex items-center justify-center gap-2">
+                        <div className="flex items-center flex-col-reverse justify-center gap-2">
+                            <div>
 
                             <img className="md:w-[3rem] w-[2rem] btn-circle" src={user?.photoURL? user?.photoURL :currentUserInfo?.photo} alt="" />
+                            </div>
+                            <div>
+
                             <h1 className="bg-amber-500 px-2 rounded ">{user?.displayName? user?.displayName : currentUserInfo?.name}</h1>
+                            </div>
                         </div>
                     </>
 
