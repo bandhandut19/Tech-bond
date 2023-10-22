@@ -34,7 +34,11 @@ const AuthProvider = ({children}) => {
         } 
     },[])
 
+    const [cred,setCred] = useState([])
 
+    const credentials = (credentials)=>{
+        setCred(credentials)
+    }
     
 
 
@@ -49,8 +53,9 @@ const AuthProvider = ({children}) => {
         user,
         createUser,
         loginUser,
-        loading
-    
+        loading,
+        credentials,
+        cred
     }
     return (
         <AuthContext.Provider value={authInfo}>

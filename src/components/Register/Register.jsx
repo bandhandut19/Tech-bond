@@ -9,7 +9,7 @@ export const auth = getAuth(app)
 
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser ,credentials} = useContext(AuthContext)
     const navigate = useNavigate()
     const [error, setError] = useState(null)
     const handleRegister = async (e) => {
@@ -35,6 +35,14 @@ const Register = () => {
             // Password meets the criteria
             
             const userInfo = { name, email, inputPassword, photo };
+
+
+
+            credentials(userInfo)
+
+
+
+
             if (email && inputPassword) {
                 
                 try {

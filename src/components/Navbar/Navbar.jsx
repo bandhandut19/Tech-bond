@@ -6,8 +6,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../../assets/images/logo.jpg'
 const Navbar = () => {
-    const { user,userInfo} = useContext(AuthContext)
-    console.log(user)
+    const { user,userInfo,cred} = useContext(AuthContext)
+    console.log(cred)
     const handleLogout = () => {
         signOut(auth)
     }
