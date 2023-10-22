@@ -38,12 +38,13 @@ const router = createBrowserRouter([
         element: <MyCart></MyCart>
       },
       {
-        path:'/:brand',
+        path:'/user/:brand',
         errorElement:<ErrorPage></ErrorPage>,
         element: <SingleBrandProducts></SingleBrandProducts>
       },
       {
-        path:'/:brand/:product',
+        path:'/user/:brand/:product',
+        // path:'/:brand/:product',
         errorElement:<ErrorPage></ErrorPage>,
         element: <ProductDetails></ProductDetails>
       },

@@ -18,7 +18,7 @@ const SingleBrandProduct = ({ product }) => {
         console.log(name)
         if(user){
 
-            navigate(`/${brandName}/${name}`)
+            navigate(`/user/${brandName}/${name}`)
         }
         else{
             toast("Login / Register To View", {
