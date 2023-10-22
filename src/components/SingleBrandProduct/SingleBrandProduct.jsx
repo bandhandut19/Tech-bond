@@ -5,6 +5,8 @@ import { AuthContext } from '../Providers/AuthProvider';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 const SingleBrandProduct = ({ product }) => {
     const { image, brandName, name, type, price, rating } = product
     const navigate = useNavigate()
@@ -27,7 +29,7 @@ const SingleBrandProduct = ({ product }) => {
                 pauseOnHover: true,
                 draggable: false,
               });
-              navigate('/login')
+              <Link to='/login'/>
         }
     }
 

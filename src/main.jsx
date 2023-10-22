@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-
 import {
   createBrowserRouter,
   RouterProvider,
@@ -44,6 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/:brand/:product',
+        errorElement:<ErrorPage></ErrorPage>,
         element: <ProductDetails></ProductDetails>
       },
       {

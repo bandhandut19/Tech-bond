@@ -7,6 +7,10 @@ import { toast } from 'react-toastify';
 
 
 const Login = () => {
+
+
+
+
     const { authInfo } = useContext(AuthContext)
     const {loginUser}= authInfo;
     const navigate = useNavigate()
@@ -54,13 +58,13 @@ const Login = () => {
                             <label className="label ">
                                 <span className="label-text text-black">Email</span>
                             </label>
-                            <input type="email" placeholder="Enter your email" name="email" className="input  input-bordered" required />
+                            <input type="email" placeholder="Enter your email" name="email" className="input  input-bordered bg-white" required />
                         </div>
                         <div className="form-control">
                             <label className="label ">
                                 <span className="label-text text-black">Password</span>
                             </label>
-                            <input type="password" placeholder="Enter your password" name="password" className="input input-bordered" required />
+                            <input type="password" placeholder="Enter your password" name="password" className="input input-bordered bg-white" required />
                             <label className="label mt-4">
                                 <Link to='/register' className="label-text-alt text-black">New Here ? <span className="link  text-amber-600  bg-slate-300 p-1 px-4 rounded-lg"> REGISTER NOW </span> </Link>
                             </label>
@@ -68,8 +72,9 @@ const Login = () => {
                         {
                             error ? <p className="text-red-800">{error}</p> : ""
                         }
-                        <div className="form-control mt-6">
-                            <input className="btn text-black bg-amber-500" type="submit" value="Login" />
+                        <div className="form-control flex gap-2 mt-6">
+                            <input className="btn text-black bg-amber-500 hover:bg-white" type="submit" value="Login" />
+                            <button className="btn  text-black bg-amber-500  hover:bg-white">Sign in with Google</button>
                         </div>
 
                     </form>
