@@ -22,6 +22,7 @@ const Login = () => {
                     pauseOnHover: true,
                     draggable: true,
                 }));
+                console.log(res.user)
                 navigate('/')
             }
         })

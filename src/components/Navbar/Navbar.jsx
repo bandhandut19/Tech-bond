@@ -38,32 +38,32 @@ const Navbar = () => {
     }
 
 
-    const [darkMode,setDarkMode]=useState("light")
+    const [darkMode, setDarkMode] = useState("light")
 
     const modeHandler = () => {
         const html = document.documentElement;
-    
+
         if (darkMode === "light") {
             html.setAttribute("data-theme", "dark")
             setDarkMode("dark");
-            localStorage.setItem("mode",'dark')
+            localStorage.setItem("mode", 'dark')
         } else {
             html.setAttribute("data-theme", "light")
             setDarkMode("light");
-            localStorage.setItem("mode",'light')
+            localStorage.setItem("mode", 'light')
         }
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         const presentMode = localStorage.getItem("mode") || "light"
         setDarkMode(presentMode)
         const html = document.documentElement
-        html.setAttribute("data-theme",presentMode)
-    },[])
-    
+        html.setAttribute("data-theme", presentMode)
+    }, [])
+
 
     return (
-        <div className={`navbar ${darkMode == "dark"? "text-white":"text-black"}`}>
+        <div className={`navbar ${darkMode == "dark" ? "text-white" : "text-black"}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -112,23 +112,25 @@ const Navbar = () => {
 
                 <div className="md:mr-2 mr-0 flex md:flex-row flex-col md:mt-0 mt-2 text-center items-center justify-center">
                     {user ? <>
-                    <div className="flex items-center justify-center gap-2">
+                        <div className="flex items-center justify-center gap-2">
 
-                        <img className="md:w-[3rem] w-[2rem]" src={currentUserInfo?.photo} alt="" />
-                        <h1 className="bg-amber-500 px-2 rounded ">{currentUserInfo?.name}</h1>
-                    </div>
+                            <img className="md:w-[3rem] w-[2rem] btn-circle" src={user?.photoURL? user?.photoURL :currentUserInfo?.photo} alt="" />
+                            <h1 className="bg-amber-500 px-2 rounded ">{user?.displayName? user?.displayName : currentUserInfo?.name}</h1>
+                        </div>
                     </>
 
-                        : ''}
+                        :
+
+                        ''}
                 </div>
 
                 {
                     user ? <Link to='/' onClick={handleLogout} className="px-3 md:py-0.5 md:ml-0 ml-6 rounded font-bold bg-amber-600">Logout</Link> : <Link to='/login' className="btn">Login</Link>
                 }
-                
+
 
                 <button onClick={modeHandler} className="px-3 md:py-0.5 md:ml-0 ml-6  rounded font-bold bg-amber-600">Dark Mode</button>
-                
+
 
             </div>
         </div>
