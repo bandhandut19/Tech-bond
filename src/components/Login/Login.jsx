@@ -2,12 +2,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext, useState } from "react";
-
+import { toast } from 'react-toastify';
 
 
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext)
+    const { authInfo } = useContext(AuthContext)
+    const {loginUser}= authInfo;
     const navigate = useNavigate()
     const [error, setError] = useState(null)
 
@@ -19,10 +20,20 @@ const Login = () => {
 
         loginUser(email, password)
             .then(res => {
-                console.log('succesfull')
+                if(res){
+                    
+                
+                (toast("Logged In Successfully", {
+                    position: "top-center",
+                    autoClose: 1000, // Close after 1 second
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                }));
                 
                 navigate('/')
-            })
+    }})
             .catch(error => {
                 setError(error.message)
 

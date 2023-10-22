@@ -8,7 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const SingleBrandProduct = ({ product }) => {
     const { image, brandName, name, type, price, rating } = product
     const navigate = useNavigate()
-    const {user} = useContext(AuthContext)
+    const { authInfo } = useContext(AuthContext)
+    const {user} = authInfo
 
 
     const handleDetails = (name)=>{

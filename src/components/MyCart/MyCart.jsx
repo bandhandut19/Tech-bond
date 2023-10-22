@@ -5,8 +5,9 @@ import MyCartProduct from "../MyCartProduct/MyCartProduct";
 const MyCart = () => {
 
     const [cart,setCart] = useState([])
+    const { authInfo } = useContext(AuthContext)
+    const {user} = authInfo
 
-    const {user} = useContext(AuthContext)
     useEffect(()=>{
         fetch('http://localhost:5000/usercart')
         .then(res=> res.json())

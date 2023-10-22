@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 const ProductDetails = () => {
     const productDetails = useParams()
     const [allProducts, setAllProducts] = useState([])
-    const {user} = useContext(AuthContext)
+    const { authInfo } = useContext(AuthContext)
+    const {user} = authInfo
 
     useEffect(() => {
         fetch('http://localhost:5000/allproducts')

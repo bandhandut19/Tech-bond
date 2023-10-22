@@ -6,13 +6,12 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../../assets/images/logo.jpg'
 const Navbar = () => {
-    const { user,userInfo,cred} = useContext(AuthContext)
-    console.log(cred)
+    const { authInfo } = useContext(AuthContext)
+    const { user} = authInfo
     const handleLogout = () => {
         signOut(auth)
     }
     
-    console.log(userInfo)
     const handleAddProduct = () => {
 
         if (!user) {

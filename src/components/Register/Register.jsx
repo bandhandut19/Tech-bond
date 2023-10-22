@@ -9,7 +9,8 @@ export const auth = getAuth(app)
 
 
 const Register = () => {
-    const { createUser ,credentials} = useContext(AuthContext)
+    const { authInfo } = useContext(AuthContext)
+    const { createUser ,credentials} = authInfo
     const navigate = useNavigate()
     const [error, setError] = useState(null)
     const handleRegister = async (e) => {

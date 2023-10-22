@@ -1,9 +1,9 @@
-import { useState } from "react";
+
 import PropTypes from 'prop-types'; 
-const MyCartProduct = ({singleCartItem,cart}) => {
+import { toast } from 'react-toastify';
+const MyCartProduct = ({singleCartItem}) => {
     const {_id,productinfo} = singleCartItem
-    const {image,name,brandName,type,price,description,rating} = productinfo
-    const [updatedCart,setUpdatedCart] = useState(cart)
+    const {image,name,price} = productinfo
 
     
     const handleRemoveCart = (_id)=>{
@@ -12,7 +12,19 @@ const MyCartProduct = ({singleCartItem,cart}) => {
             method: "DELETE"
         })
         .then(res=> res.json())
-        .then(data=> console.log(data))
+        .then(data=> {
+            if(data){
+
+                toast("Deleted Successfully", {
+                    position: "top-center",
+                    autoClose: 1000, // Close after 1 second
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
+            }
+        })
     }
     return (
         <div className="flex flex-col items-center justify-center border-2 border-amber-600 rounded-lg p-2">
