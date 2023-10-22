@@ -38,7 +38,7 @@ const SingleBrandProducts = () => {
             
             
         {
-             brandProducts.length===0 ? 
+             brandProducts?.length===0 ? 
              <div className="text-center">
 
                 <h1 className="text-5xl text-amber-600 font-bold mt-32">Products Will Be Available Soon</h1>
