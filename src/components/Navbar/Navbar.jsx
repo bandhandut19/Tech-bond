@@ -115,7 +115,7 @@ const Navbar = () => {
                         <div className="flex items-center flex-col-reverse justify-center gap-2">
                             <div>
 
-                            <img className="md:w-[3rem] w-[2rem] btn-circle" src={user?.photoURL? user?.photoURL :currentUserInfo?.photo} alt="" />
+                            <img className="w-[3rem] btn-circle" src={user?.photoURL? user?.photoURL :currentUserInfo?.photo} alt="" />
                             </div>
                             <div>
 
