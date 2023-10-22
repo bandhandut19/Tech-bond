@@ -1,12 +1,34 @@
 
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Providers/AuthProvider";
+import { AuthContext, auth } from "../Providers/AuthProvider";
 import { useContext, useState } from "react";
 import { toast } from 'react-toastify';
-
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 
 const Login = () => {
+
+    const provider = new GoogleAuthProvider();
+
+    const handleGoogleProvider = ()=>{
+        signInWithPopup(auth,provider)
+        .then(res => {
+            if(res.user){
+                (toast("Logged In Successfully", {
+                    position: "top-center",
+                    autoClose: 1000, // Close after 1 second
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                }));
+                navigate('/')
+            }
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+    }
 
 
 
@@ -74,7 +96,7 @@ const Login = () => {
                         }
                         <div className="form-control flex gap-2 mt-6">
                             <input className="btn text-black bg-amber-500 hover:bg-white" type="submit" value="Login" />
-                            <button className="btn  text-black bg-amber-500  hover:bg-white">Sign in with Google</button>
+                            <button onClick={handleGoogleProvider} className="btn  text-black bg-amber-500  hover:bg-white">Log in with Google</button>
                         </div>
 
                     </form>
