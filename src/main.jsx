@@ -17,12 +17,14 @@ import Login from './components/Login/login';
 import Register from './components/Register/Register';
 import PrivateRouteForAddProduct from './components/PrivateRouteForAddProduct/PrivateRouteForAddProduct';
 import UpdateProducts from './components/UpdateProducts/UpdateProducts';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path:'/',
