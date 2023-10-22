@@ -39,6 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/:brand',
+        errorElement:<ErrorPage></ErrorPage>,
         element: <SingleBrandProducts></SingleBrandProducts>
       },
       {

@@ -1,8 +1,8 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+TechBond is a gadget shop website.
+Main features are
+1. One can Register with his email and specify password as he likes.
+2. One can login using Google to be more safe.
+3. Brand-wise catagorized products and details attached
+4. Fully Responsive
+5. mongoDB used to store all products and user informaions
+6. one can update and add products
